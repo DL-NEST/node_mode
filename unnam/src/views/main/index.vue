@@ -1,52 +1,68 @@
 <template>
-  <div class="main page">
-    <div class="main-list">
-      <div class="list-icon"></div>
-      <div class="list-node" v-for="item in 6" :key="2"></div>
+  <div class="main">
+    <div class="head">
+      <control-top-main/>
     </div>
-    <div class="main-content">
-
+    <div class="control">
+      <main-list/>
+      <main-content/>
     </div>
   </div>
 </template>
 
-<script lang="ts">   模块，
+<script lang="ts">
 import { defineComponent } from 'vue';
+import { KeyOutline } from '@vicons/ionicons5'
+import {NIcon} from 'naive-ui';
+import controlTopMain from '@/components/control/controlTopMain.vue'
+import mainList from '@/views/main/component/list/index.vue'
+import mainContent from '@/views/main/component/content/index.vue'
 
 export default defineComponent({
-  name: 'main',
+  name: 'app-main',
   components: {
+    NIcon,
+    KeyOutline,
+    controlTopMain,
+    mainList,
+    mainContent
   },
+  data(){
+    return{
+      list:[
+          '系统状态',
+          '信息查询',
+          '考勤管理',
+          '信息录入',
+          '权限管理',
+          '管理设置'
+      ]
+    }
+  }
 });
 </script>
 
 <style lang="scss" scoped>
 .main{
-  background-color: white;
-  // 布局
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  position: fixed;
+  //布局
   display: flex;
-  flex-direction: row;
-  // 列表
-  .main-list{
-    background-color: aqua;
-    flex-grow: 2;
-    .list-icon{
-      background-color: antiquewhite;
-      width: 100%;
-      height: 90px;
-      margin-bottom: 10px;
-    }
-    .list-node{
-      background-color: antiquewhite;
-      width: 100%;
-      height: 65px;
-      margin-bottom: 10px;
-    }
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  .head{
+    width: 100%;
+    height: 20px;
   }
-  // 内容
-  .main-content{
-    background-color: #727272;
-    flex-grow: 8;
+  .control{
+    width: 100%;
+    height: 100%;
+    background-color: #fdfdfd;
+    // 布局
+    display: flex;
+    flex-direction: row;
   }
 }
 </style>

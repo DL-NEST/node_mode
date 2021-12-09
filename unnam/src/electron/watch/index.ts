@@ -15,13 +15,13 @@ app.on('activate', () => {
 
 app.on('ready', async () => {
   // Install Vue Devtools
-  if (!process.env.IS_TEST) {
-    try {
-      await installExtension(VUEJS3_DEVTOOLS);
-    } catch (e) {
-      console.error('Vue Devtools failed to install:', e.toString());
-    }
-  }
+  // if (!process.env.IS_TEST) {
+  //   try {
+  //     await installExtension(VUEJS3_DEVTOOLS);
+  //   } catch (e) {
+  //     console.error('Vue Devtools failed to install:', e.toString());
+  //   }
+  // }
   await createWindow();
 });
 

@@ -51,11 +51,30 @@ if (isDevelopment) {
 createWatch();
 /** 注册menu */
 Menu.setApplicationMenu(menu);
-
+// ipc
 ipcMain.on('main', (event) => {
   win.setSize(1250, 789);
   win.center();
 });
+
+ipcMain.on('btn_switch', (event, args) => {
+  switch (args) {
+    case 'minimize':
+      win.minimize();
+      break;
+    case 'close':
+      win.close();
+      break;
+    case 'maximize':
+      if (win.isMaximized()) {
+        win.unmaximize();
+      } else {
+        win.maximize();
+      }
+      break;
+  }
+},
+);
 
 export {win, createWindow};
 

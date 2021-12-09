@@ -1,5 +1,5 @@
 <template>
-<!--  <div ></div>-->
+  <control-top/>
   <div class="login page">
     <div class="login-title">
       智道员工管理系统
@@ -34,10 +34,11 @@
 </template>
 
 <script lang="ts">
-import { FlashOutline as FlashIcon ,PersonCircleOutline,KeyOutline} from '@vicons/ionicons5'
+import { FlashOutline as FlashIcon ,PersonCircleOutline,KeyOutline, RemoveOutline,CloseOutline} from '@vicons/ionicons5'
 import {defineComponent} from 'vue';
 import {NInput,NButton,NCheckbox,NIcon} from 'naive-ui';
 const { ipcRenderer } = window.require("electron");
+import controlTop from '@/components/control/controlTop.vue'
 
 export default defineComponent({
   name: 'login',
@@ -48,13 +49,19 @@ export default defineComponent({
     FlashIcon,
     NIcon,
     PersonCircleOutline,
-    KeyOutline
+    KeyOutline,
+    RemoveOutline,
+    CloseOutline,
+    controlTop
   },
   methods:{
     to(){
       ipcRenderer.send("main");
       console.log('main');
       this.$router.push('/main')
+    },
+    switch_btn(mState: String){
+      ipcRenderer.send("btn_switch", mState);
     }
   }
 });
@@ -62,6 +69,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .login{
+  position: relative;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -75,19 +83,18 @@ export default defineComponent({
     margin-bottom: 20px;
   }
   .login-woc{
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 30px;
     .login-woc-slain{
       height: 2.8px;
-      width: 100px;
+      flex-grow: 5;
       background-color: var(--login-main);
     }
     p{
       flex-grow: 1;
-      margin-left: 10px;
-      margin-right: 10px;
     }
   }
   .login-from{
