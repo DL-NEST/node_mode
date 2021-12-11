@@ -3,15 +3,15 @@
     <div class="head">
       <control-top-main/>
     </div>
-    <div class="control">
-      <main-list/>
-      <main-content/>
+    <div class="control" ref="pull" v-bind:class="shrink ? '' : 'shrink'" >
+      <main-list :shrink="shrink"/>
+      <main-content @an="an"/>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {defineComponent, ref} from 'vue';
 import { KeyOutline } from '@vicons/ionicons5'
 import {NIcon} from 'naive-ui';
 import controlTopMain from '@/components/control/controlTopMain.vue'
@@ -20,6 +20,12 @@ import mainContent from '@/views/main/component/content/index.vue'
 
 export default defineComponent({
   name: 'app-main',
+  setup(){
+    const shrink = ref(true)
+    return{
+      shrink
+    }
+  },
   components: {
     NIcon,
     KeyOutline,
@@ -37,6 +43,13 @@ export default defineComponent({
           '权限管理',
           '管理设置'
       ]
+    }
+  },
+  methods:{
+    // 伸缩边栏
+    an(ars:string){
+      // (this.$refs.pull as  HTMLElement).classList.toggle("shrink");
+      this.shrink= !this.shrink as boolean
     }
   }
 });

@@ -1,5 +1,6 @@
 import {win , createWindow} from '@/background';
 import {app, protocol, BrowserWindow, globalShortcut} from 'electron';
+import {loginOptions, mainOptions} from '@/electron';
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer';
 
 
@@ -10,7 +11,7 @@ app.on('window-all-closed', () => {
 });
 
 app.on('activate', () => {
-  if (BrowserWindow.getAllWindows().length === 0) { createWindow(); }
+  if (BrowserWindow.getAllWindows().length === 0) { createWindow(loginOptions,'login'); }
 });
 
 app.on('ready', async () => {
@@ -22,7 +23,7 @@ app.on('ready', async () => {
   //     console.error('Vue Devtools failed to install:', e.toString());
   //   }
   // }
-  await createWindow();
+  await createWindow(loginOptions,'login');
 });
 
 /** 注册全局快捷键 */

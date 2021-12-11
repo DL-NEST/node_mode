@@ -24,6 +24,16 @@
           </n-icon>
         </template>
       </n-input>
+      <n-input class="captcha" v-show="true" placeholder="验证码" style="width: 300px;text-align: left">
+        <template #prefix>
+          <n-icon>
+            <shield-checkmark-outline style="margin-right: 10px;"/>
+          </n-icon>
+        </template>
+        <template #suffix>
+            <img src="../../assets/yzm.jpg" style="height: 35px;width: 80px" alt="">
+        </template>
+      </n-input>
     </div>
     <div class="login-sf">
       <n-checkbox class="login-multi">记住密码</n-checkbox>
@@ -34,7 +44,7 @@
 </template>
 
 <script lang="ts">
-import { FlashOutline as FlashIcon ,PersonCircleOutline,KeyOutline, RemoveOutline,CloseOutline} from '@vicons/ionicons5'
+import { FlashOutline as FlashIcon ,PersonCircleOutline,KeyOutline, RemoveOutline,CloseOutline,ShieldCheckmarkOutline} from '@vicons/ionicons5'
 import {defineComponent} from 'vue';
 import {NInput,NButton,NCheckbox,NIcon} from 'naive-ui';
 const { ipcRenderer } = window.require("electron");
@@ -52,13 +62,12 @@ export default defineComponent({
     KeyOutline,
     RemoveOutline,
     CloseOutline,
+    ShieldCheckmarkOutline,
     controlTop
   },
   methods:{
     to(){
       ipcRenderer.send("main");
-      console.log('main');
-      this.$router.push('/main')
     },
     switch_btn(mState: String){
       ipcRenderer.send("btn_switch", mState);
@@ -69,6 +78,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .login{
+  width: 100%;
+  height: 100%;
   position: relative;
   background-color: white;
   display: flex;
@@ -87,7 +98,7 @@ export default defineComponent({
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     .login-woc-slain{
       height: 2.8px;
       flex-grow: 5;
@@ -100,10 +111,11 @@ export default defineComponent({
   .login-from{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    height: 118px;
+    margin-bottom: 15px;
     .username{
-      margin-bottom: 20px;
     }
-    margin-bottom: 30px;
   }
   .login-sf{
     -webkit-app-region: no-drag;
@@ -113,7 +125,7 @@ export default defineComponent({
     justify-content: space-between;
     align-items: center;
     flex-wrap: nowrap;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     .login-wj{
       color: var(--login-main);
       text-decoration:none;

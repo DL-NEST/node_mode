@@ -42,15 +42,13 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .control-top-main{
-  background-color: #f3f2f2;
+  background-color: rgba(241, 241, 241,1);
   position: absolute;
   z-index: 99;
   top: 0;
   left: 0;
   width: 100%;
   height: 20px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
   // 布局
   display: flex;
   flex-direction: row;
@@ -67,11 +65,11 @@ export default defineComponent({
     user-select:none;
   }
   div:hover{
-    background-color: var(--login-main);
-    color: #ffffff;
+    background-color: rgba(229, 229, 229,1);
   }
-  .close{
-    border-top-right-radius: 4px;
+  .close:hover{
+    background-color: rgba(232, 17, 35,1);
+    color: white;
   }
   .maximize{
     .n-icon {

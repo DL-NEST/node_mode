@@ -13,16 +13,15 @@ protocol.registerSchemesAsPrivileged([
 ]);
 
 let win: BrowserWindow;
-async function createWindow() {
+async function createWindow(options: Electron.BrowserWindowConstructorOptions | undefined, router: string | undefined) {
   // Create the browser window.
-  win = new BrowserWindow(loginOptions);
+  win = new BrowserWindow(options);
 
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
-    await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL as string);
+    await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL as string + '#' + router);
     if (!process.env.IS_TEST) {
-      console.log('test');
-      // win.webContents.openDevTools();
+     // win.webContents.openDevTools();
     }
   } else {
     createProtocol('app');
@@ -53,8 +52,11 @@ createWatch();
 Menu.setApplicationMenu(menu);
 // ipc
 ipcMain.on('main', (event) => {
-  win.setSize(1250, 789);
-  win.center();
+  // win.setSize(1250, 789);
+  // win.center();
+  // 重新生成
+  win.close();
+  createWindow(mainOptions, 'main');
 });
 
 ipcMain.on('btn_switch', (event, args) => {

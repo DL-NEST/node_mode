@@ -37,9 +37,10 @@ export default defineComponent({
 <style lang="scss" scoped>
 .control-top{
     position: absolute;
-    top: 0;
+    z-index: 99;
+    top: 1.4px;
     left: 0;
-    width: 100%;
+    width: 99.7%;
     height: 20px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;

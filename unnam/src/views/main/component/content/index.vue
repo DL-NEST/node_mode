@@ -1,6 +1,8 @@
 <template>
   <div class="main-content">
-    <div class="content-top"></div>
+    <div class="content-top">
+      <button @click="$emit('an')">ss</button>
+    </div>
     <div class="content-history"></div>
     <div class="content-router"></div>
   </div>
@@ -32,7 +34,7 @@ export default defineComponent({
   }
   .content-router{
     position: relative;
-    background-color: aquamarine;
+    background-color: #ffffff;
     height: 100%;
     flex-grow: 1;
   }
