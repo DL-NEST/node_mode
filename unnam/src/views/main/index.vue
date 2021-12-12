@@ -4,8 +4,8 @@
       <control-top-main/>
     </div>
     <div class="control" ref="pull" v-bind:class="shrink ? '' : 'shrink'" >
-      <main-list :shrink="shrink"/>
-      <main-content @an="an"/>
+      <main-list :shrink="shrink" :shrink_text="shrink_text"/>
+      <main-content :shrink="shrink" @an="an"/>
     </div>
   </div>
 </template>
@@ -22,8 +22,10 @@ export default defineComponent({
   name: 'app-main',
   setup(){
     const shrink = ref(true)
+    const shrink_text = ref(true)
     return{
-      shrink
+      shrink,
+      shrink_text
     }
   },
   components: {
@@ -48,8 +50,18 @@ export default defineComponent({
   methods:{
     // 伸缩边栏
     an(ars:string){
-      // (this.$refs.pull as  HTMLElement).classList.toggle("shrink");
-      this.shrink= !this.shrink as boolean
+      if(this.shrink == true){
+        this.shrink_text= !this.shrink_text as boolean
+        setTimeout(()=>{
+          this.shrink= !this.shrink as boolean
+        },200)
+      }else {
+        this.shrink= !this.shrink as boolean
+        setTimeout(()=>{
+          this.shrink_text= !this.shrink_text as boolean
+        },300)
+      }
+      // (this.$refs.pull as HTMLElement).classList.toggle("shrink");
     }
   }
 });
