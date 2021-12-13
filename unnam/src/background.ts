@@ -26,7 +26,7 @@ async function createWindow(options: Electron.BrowserWindowConstructorOptions | 
   } else {
     createProtocol('app');
     // Load the index.html when not in development
-    await win.loadURL('app://./index.html');
+    await win.loadURL('app://./index.html/' + '#' + router);
   }
 }
 
@@ -56,7 +56,7 @@ ipcMain.on('main', (event) => {
   // win.center();
   // 重新生成
   win.close();
-  createWindow(mainOptions, 'main');
+  createWindow(mainOptions, '/main');
 });
 
 ipcMain.on('btn_switch', (event, args) => {

@@ -2,23 +2,10 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import type { App } from 'vue';
 import { createRouterGuide } from '@/router/guard';
+// 固定路由,错误重定向
+import {constantRoutes} from '@/router/loadRouter';
 
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/',
-    redirect: '/login',
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('views/login/index.vue'),
-  },
-  {
-    path: '/main',
-    name: 'main',
-    component: () => import('views/main/index.vue'),
-  },
-];
+const routes: RouteRecordRaw[] = [...constantRoutes];
 
 const router = createRouter({
   history: createWebHashHistory(),

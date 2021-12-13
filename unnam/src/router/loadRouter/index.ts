@@ -1,5 +1,6 @@
 // @ts-ignore
-// import customRoutes from '../modules';
+import constantRoutes from './constant-routes';
 
 
-export { customRoutes };
+export {constantRoutes};
+
