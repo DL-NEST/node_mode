@@ -4,7 +4,7 @@
       <img src="../../../../assets/logo.svg" alt="">
       <p class="" >logo</p>
     </div>
-    <div class="list-node" >
+    <div class="list-node">
       <div class="active-tab" ref="active_tab"></div>
       <div class="node-link active" @click="active($event,0)">
           <n-icon class="node-icon ">
@@ -47,7 +47,9 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
+import {defineComponent} from 'vue';
+import {routePath} from '@/router/constant';
+import {RouteKey,mainRouter} from '@/router/constant/contentrouter'
 import { SpeedometerOutline,
   FileTrayFullOutline,
   CogOutline,
@@ -71,18 +73,6 @@ export default defineComponent({
     KeyOutline,
     PushOutline
   },
-  data(){
-    return{
-      list:[
-        '控制台',
-        '信息查询',
-        '考勤管理',
-        '信息录入',
-        '权限管理',
-        '管理设置'
-      ]
-    }
-  },
   methods:{
     active(even:any,num:number){
       (this.$refs.active_tab as any).style.top = 18+num*57.5+'px';
@@ -90,6 +80,7 @@ export default defineComponent({
         node.classList.remove("active")
       })
       even.currentTarget.classList.add("active")
+      this.$router.push(routePath(mainRouter[num]))
     }
   }
 });

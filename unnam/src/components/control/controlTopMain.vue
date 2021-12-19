@@ -42,7 +42,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .control-top-main{
-  background-color: rgba(241, 241, 241,1);
+  background-color: rgba(230, 230, 230,1);
   position: absolute;
   z-index: 99;
   top: 0;
@@ -65,7 +65,7 @@ export default defineComponent({
     user-select:none;
   }
   div:hover{
-    background-color: rgba(229, 229, 229,1);
+    background-color: rgba(210, 210, 210,1);
   }
   .close:hover{
     background-color: rgba(232, 17, 35,1);

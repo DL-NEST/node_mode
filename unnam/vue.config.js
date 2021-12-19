@@ -3,27 +3,36 @@ const path = require('path')
 module.exports = {
   pluginOptions: {
     electronBuilder: {
-      preload: "src/preload.js",
       nodeIntegration: true,
+      builderOptions:{
+        asar: true,
+        npmRebuild: false,
+      },
+      preload: "src/preload.js",
+      externals: ['serialport'],
+      nodeModulesPath: ['../../node_modules', './node_modules','../node_modules']//这里是多个node_modules路径，按自己需要配置即可
     },
   },
   devServer: {
     port: 8088,
     proxy: {
-      "/api": {
-        target: "http://localhost:80", // 后端接口地址
+      '/test': {
+        target: process.env.VUE_APP_URL, // 后端接口地址
         changeOrigin: true, // 是否允许跨越
+        secure: false,
         pathRewrite: {
-          "^/api": "",
-        },
+          '^/test': ''
+        }
       },
-      "/test": {
-        target: "http://localhost:2048", // 后端接口地址
+      '/user': {
+        target: process.env.VUE_APP_USER_URL, // 后端接口地址
+        ws: true,
         changeOrigin: true, // 是否允许跨越
+        secure: false,
         pathRewrite: {
-          "^/test": "",
-        },
-      },
+          '^/user': ''
+        }
+      }
     },
   },
   // 自定义默认路径

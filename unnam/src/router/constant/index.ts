@@ -1,1 +1,1 @@
-/** 路由查询 */
+export * from './contentrouter';
