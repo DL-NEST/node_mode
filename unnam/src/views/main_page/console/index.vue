@@ -1,14 +1,27 @@
 <template>
   <div class="console">
-    <button>qfeqw</button>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {defineComponent, ref} from 'vue';
+import serialport from 'serialport';
+import {NSelect,NButton,NInput} from 'naive-ui';
 
 export default defineComponent({
-  name: 'console'
+  name: 'console',
+  components:{
+    NButton,
+    NSelect,
+    NInput
+  },
+  setup () {
+
+  },
+  methods:{
+    setUserid(userid:any){
+    }
+  }
 });
 </script>
 
@@ -17,7 +30,7 @@ export default defineComponent({
   position: relative;
   width: 100%;
   height: 100%;
-  background-color:  var(--main-color);
+  background-color: var(--main-color);
   border-radius: 14px;
 }
 </style>

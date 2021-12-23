@@ -7,7 +7,6 @@ import {createWatch, menu, loginOptions, mainOptions} from '@/electron';
 import {signUp} from '@/electron/ipc';
 app.allowRendererProcessReuse = false;
 
-console.log('gbyij');
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 // 在应用程序准备好之前，必须注册方案

@@ -11,5 +11,7 @@
       $dialog?: DialogProviderInst;
       $message?: MessageProviderInst;
       $notification?: NotificationProviderInst;
+
+      require(electron: string): any;
     }
   }

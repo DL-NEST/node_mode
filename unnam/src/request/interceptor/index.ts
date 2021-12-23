@@ -1,4 +1,4 @@
-import instance from '@/request';
+import {instance} from '@/request';
 
 // 3，后端数据标准{"code": 2000,"msg": "成功","data": {"test": "dd"}}
 

@@ -122,7 +122,7 @@ export default defineComponent({
     height: auto;
     flex-grow: 1;
     z-index: 28;
-    padding: 0.7rem;
+    padding: 0.4rem;
     box-sizing:border-box;
     overflow-y: auto;
     overflow-x: hidden;
